@@ -1,0 +1,41 @@
+<main class="terminal-shell" [class.critical-failure]="gameState === 'magic-word'">
+  <div class="scanline-layer" aria-hidden="true"></div>
+
+  @if (gameState !== 'magic-word') {
+    <header class="masthead">
+      <div class="badge">INGEN NETWORK NODE 04</div>
+      <h1>DINOSAUR PARK</h1>
+      <p class="subtitle">PRIZE PROMOTION SYSTEM</p>
+      <p class="tagline">WE SPARED NO EXPENSES.</p>
+    </header>
+
+    <section class="promo-board" aria-label="Dinosaur Park prize promotion">
+      <div class="status-strip">
+        <span>ONLINE PROMOTIONAL TERMINAL</span>
+        <span>SECURE ENTRY VERIFIED</span>
+      </div>
+
+      @if (gameState === 'scratch' || gameState === 'won') {
+        <app-scratch-card
+          [completed]="gameState === 'won'"
+          (scratchComplete)="onScratchComplete()"
+        ></app-scratch-card>
+      }
+
+      @if (gameState === 'won') {
+        <app-prize-reveal (revealPrize)="revealPrize()"></app-prize-reveal>
+      }
+
+      @if (gameState === 'loading') {
+        <app-loading-sequence (complete)="triggerMagicWord()"></app-loading-sequence>
+      }
+    </section>
+
+    <div class="information-grid">
+      <app-prize-list></app-prize-list>
+      <app-game-rules></app-game-rules>
+    </div>
+  } @else {
+    <app-magic-word></app-magic-word>
+  }
+</main>

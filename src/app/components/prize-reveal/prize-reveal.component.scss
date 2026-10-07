@@ -1,0 +1,31 @@
+.reveal-panel {
+  padding: 0 13px 15px;
+  text-align: center;
+}
+
+p {
+  margin: 4px 0 12px;
+  color: #bfffc0;
+  font-size: 0.84rem;
+}
+
+button {
+  max-width: 100%;
+  padding: 11px 14px;
+  color: #210b00;
+  background: linear-gradient(#fff59c, #ffb422 52%, #d96b00);
+  border: 4px outset #fff3a8;
+  box-shadow: 3px 3px 0 #020602;
+  font-weight: 900;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+button:active {
+  border-style: inset;
+  transform: translate(2px, 2px);
+}
+
+button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}

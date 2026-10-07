@@ -1,0 +1,53 @@
+.loader {
+  padding: 16px 13px 18px;
+}
+
+.loader-title {
+  margin-bottom: 12px;
+  padding: 5px 8px;
+  color: #06130b;
+  background: #9ab595;
+  border: 3px outset #d9e4d5;
+  font-weight: 700;
+}
+
+p {
+  min-height: 1.35em;
+  margin: 7px 0;
+  color: #718371;
+  font-size: 0.88rem;
+}
+
+p.active {
+  color: #f6ffb0;
+}
+
+p.complete {
+  color: #55e162;
+}
+
+span {
+  float: right;
+}
+
+.progress-shell {
+  height: 24px;
+  margin-top: 14px;
+  padding: 3px;
+  background: #030603;
+  border: 3px inset #a6b2a5;
+}
+
+.progress-bar {
+  height: 100%;
+  background: repeating-linear-gradient(90deg, #42d04c 0 9px, #248c2d 9px 12px);
+  transition: width 80ms steps(2, end);
+}
+
+pre {
+  max-width: 100%;
+  overflow: hidden;
+  margin: 10px 0 0;
+  color: #c5ffc3;
+  font: 700 0.82rem "Courier New", monospace;
+}

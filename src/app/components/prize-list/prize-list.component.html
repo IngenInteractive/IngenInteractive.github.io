@@ -1,0 +1,12 @@
+<section class="box" aria-labelledby="prize-list-title">
+  <h2 id="prize-list-title">PRIZE LIST</h2>
+  <ol>
+    @for (prize of prizes; track prize) {
+      <li><span>{{ prize }}</span></li>
+    }
+    <li class="grand">
+      <span>GRAND PRIZE</span>
+      <strong>A BEJEWELED 14K GOLD DINOSAUR PART PENDANT OF YOUR CHOICE</strong>
+    </li>
+  </ol>
+</section>

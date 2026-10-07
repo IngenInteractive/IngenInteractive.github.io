@@ -1,0 +1,26 @@
+<section class="scratch-module" aria-labelledby="scratch-title">
+  <div class="module-title" id="scratch-title">SCRATCH TO REVEAL YOUR PRIZE</div>
+
+  <div class="scratch-frame" [class.is-complete]="completed">
+    <div class="winner-message" aria-live="polite">
+      <span>CONGRATULATIONS!</span>
+      <strong>YOU WON!</strong>
+    </div>
+    <canvas
+      #scratchCanvas
+      class="scratch-canvas"
+      aria-label="Scratch-off prize area"
+      role="img"
+      tabindex="0"
+      (pointerdown)="beginScratch($event)"
+      (pointermove)="scratch($event)"
+      (pointerup)="endScratch()"
+      (pointercancel)="endScratch()"
+      (pointerleave)="endScratch()"
+      (keydown.enter)="keyboardReveal()"
+      (keydown.space)="keyboardReveal()"
+    ></canvas>
+  </div>
+
+  <p class="scratch-help">Use finger or mouse. Keyboard users may press Enter on the card.</p>
+</section>

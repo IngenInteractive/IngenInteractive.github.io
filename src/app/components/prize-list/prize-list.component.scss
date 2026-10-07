@@ -1,0 +1,47 @@
+.box {
+  background: #101a13;
+  border: 4px ridge #788c75;
+}
+
+h2 {
+  margin: 0;
+  padding: 6px 8px;
+  color: #06130b;
+  background: #c7cfb9;
+  border-bottom: 3px groove #f8fff4;
+  font-size: 1rem;
+}
+
+ol {
+  margin: 0;
+  padding: 8px;
+  list-style-position: inside;
+}
+
+li {
+  margin: 0 0 6px;
+  padding: 6px;
+  color: #e2f6d8;
+  background: #07100a;
+  border: 2px inset #61725f;
+  font-weight: 700;
+}
+
+.grand {
+  color: #fff585;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 245, 133, 0.1) 0 7px, transparent 7px 14px),
+    #18200b;
+  border: 3px outset #fff585;
+}
+
+.grand span,
+.grand strong {
+  display: block;
+}
+
+.grand strong {
+  margin-top: 4px;
+  color: #ffffff;
+  font-size: 0.9rem;
+}

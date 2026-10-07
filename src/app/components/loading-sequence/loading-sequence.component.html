@@ -1,0 +1,15 @@
+<section class="loader" aria-live="polite">
+  <div class="loader-title">COMPUTER PRIZE RETRIEVAL</div>
+  @for (step of steps; track step.label; let index = $index) {
+    <p [class.complete]="index < activeStep" [class.active]="index === activeStep">
+      {{ step.label }}
+      @if (index < activeStep) {
+        <span>OK</span>
+      }
+    </p>
+  }
+  <div class="progress-shell" aria-label="Loading progress">
+    <div class="progress-bar" [style.width.%]="progress"></div>
+  </div>
+  <pre>[{{ '█'.repeat(progress / 5) }}{{ ' '.repeat(20 - progress / 5) }}] {{ progress }}%</pre>
+</section>

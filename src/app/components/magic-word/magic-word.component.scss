@@ -1,0 +1,118 @@
+.failure-screen {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 18px;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 0, 0, 0.16) 0 2px, transparent 2px 7px),
+    radial-gradient(circle at 50% 50%, rgba(255, 46, 46, 0.22), transparent 55%),
+    #020202;
+}
+
+.failure-screen::before,
+.failure-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.failure-screen::before {
+  background: linear-gradient(90deg, rgba(255, 0, 0, 0.18), transparent 48%, rgba(0, 255, 80, 0.12));
+  animation: rgbSplit 0.44s steps(2, end) infinite;
+}
+
+.failure-screen::after {
+  background: repeating-linear-gradient(90deg, transparent 0 13px, rgba(255, 255, 255, 0.06) 13px 14px);
+  animation: tear 0.7s steps(3, end) infinite;
+}
+
+.magic-video {
+  display: none;
+  width: min(100%, 900px);
+  max-height: 82vh;
+  object-fit: contain;
+  border: 5px ridge #ff2c2c;
+  background: #000;
+}
+
+.magic-video.is-visible {
+  display: block;
+}
+
+.failure-copy {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 850px);
+  text-align: center;
+  animation: threatPulse 1.2s steps(2, end) infinite;
+}
+
+.alert-line {
+  display: inline-block;
+  padding: 6px 9px;
+  color: #000;
+  background: #ffef40;
+  border: 3px outset #fff9a6;
+  font-weight: 900;
+}
+
+h2 {
+  margin: 20px 0 14px;
+  color: #ff342e;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(1.8rem, 8.8vw, 6.2rem);
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-shadow: 4px 0 0 #00ff4c, -4px 0 0 #3155ff, 0 0 18px #ff342e;
+}
+
+h2 span,
+h2 strong {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.scream {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1px;
+  max-width: 100%;
+  color: #ffffff;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(2.2rem, 12vw, 7rem);
+  line-height: 0.9;
+}
+
+.scream span {
+  display: inline-block;
+  animation: screamRise 0.7s steps(2, end) infinite;
+  animation-delay: calc(var(--i) * 42ms);
+}
+
+@keyframes rgbSplit {
+  0%, 100% { transform: translateX(0); }
+  34% { transform: translateX(6px); }
+  67% { transform: translateX(-5px); }
+}
+
+@keyframes tear {
+  0%, 100% { transform: translateY(0); opacity: 0.35; }
+  50% { transform: translateY(9px); opacity: 0.72; }
+}
+
+@keyframes threatPulse {
+  0%, 100% { transform: scale(1); filter: contrast(1); }
+  50% { transform: scale(1.015); filter: contrast(1.35); }
+}
+
+@keyframes screamRise {
+  0%, 100% { transform: translate(0, 0) skewX(0deg); color: #fff; }
+  50% { transform: translate(0, -8px) skewX(-7deg); color: #ff342e; }
+}

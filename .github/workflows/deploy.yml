@@ -1,0 +1,69 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-path: ${{ steps.resolve-output.outputs.path }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Angular application
+        run: npm run build
+
+      - name: Resolve Angular build output
+        id: resolve-output
+        run: node scripts/resolve-pages-output.mjs >> "$GITHUB_OUTPUT"
+
+      - name: Prepare SPA fallback
+        run: cp "${{ steps.resolve-output.outputs.path }}/index.html" "${{ steps.resolve-output.outputs.path }}/404.html"
+
+      - name: Verify static Pages artifact
+        run: |
+          test -f "${{ steps.resolve-output.outputs.path }}/index.html"
+          test -d "${{ steps.resolve-output.outputs.path }}/assets"
+          grep -q '<base href="/">' "${{ steps.resolve-output.outputs.path }}/index.html"
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ steps.resolve-output.outputs.path }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

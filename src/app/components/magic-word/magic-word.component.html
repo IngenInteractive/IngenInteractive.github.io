@@ -1,0 +1,27 @@
+<section class="failure-screen" aria-live="assertive">
+  <video
+    #magicVideo
+    class="magic-video"
+    [class.is-visible]="hasVideo"
+    [src]="videoSource"
+    playsinline
+    muted
+    loop
+    (loadeddata)="onVideoReady()"
+    (error)="onVideoError()"
+  ></video>
+
+  @if (!hasVideo) {
+    <div class="failure-copy">
+      <div class="alert-line">PARK SECURITY OVERRIDE</div>
+      <h2>
+        <span>YOU DID NOT SAY</span>
+      </h2>
+      <div class="scream" aria-label="A repeated system failure scream">
+        @for (letter of screamLetters; track letter) {
+          <span [style.--i]="letter">THE MAGIC WORD</span>
+        }
+      </div>
+    </div>
+  }
+</section>
