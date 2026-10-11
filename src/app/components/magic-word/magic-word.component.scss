@@ -31,17 +31,86 @@
   animation: tear 0.7s steps(3, end) infinite;
 }
 
-.magic-video {
+.win98-window {
   display: none;
-  width: min(100%, 900px);
-  max-height: 82vh;
-  object-fit: contain;
-  border: 5px ridge #ff2c2c;
-  background: #000;
+  position: relative;
+  z-index: 1;
+  width: min(100%, 860px);
+  background: #c0c0c0;
+  border-top: 3px solid #ffffff;
+  border-left: 3px solid #ffffff;
+  border-right: 3px solid #404040;
+  border-bottom: 3px solid #404040;
+  box-shadow:
+    inset 1px 1px 0 #dfdfdf,
+    inset -1px -1px 0 #808080,
+    10px 10px 0 rgba(0, 0, 0, 0.45);
 }
 
-.magic-video.is-visible {
+.win98-window.is-visible {
   display: block;
+}
+
+.win98-titlebar {
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  align-items: center;
+  gap: 5px;
+  min-height: 24px;
+  padding: 3px 4px;
+  color: #ffffff;
+  background: linear-gradient(90deg, #000080, #1084d0);
+  font: 700 0.86rem Arial, sans-serif;
+  text-shadow: none;
+}
+
+.window-icon {
+  width: 16px;
+  height: 16px;
+  background:
+    linear-gradient(45deg, transparent 0 36%, #ffef40 36% 64%, transparent 64%),
+    linear-gradient(#ff342e, #ff342e);
+  border: 1px solid #ffffff;
+}
+
+.window-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.window-controls {
+  display: flex;
+  gap: 3px;
+}
+
+.control-button {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  color: #000000;
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+  font: 700 0.75rem Arial, sans-serif;
+  line-height: 1;
+}
+
+.win98-body {
+  padding: 8px;
+  border-top: 2px solid #808080;
+  background: #000000;
+}
+
+.magic-video {
+  display: block;
+  width: 100%;
+  max-height: min(72vh, 620px);
+  object-fit: contain;
+  background: #000000;
 }
 
 .failure-copy {

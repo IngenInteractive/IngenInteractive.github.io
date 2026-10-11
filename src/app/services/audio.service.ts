@@ -9,6 +9,7 @@ export class AudioService {
     if (!this.audio) {
       this.audio = new Audio(MAGIC_WORD_AUDIO);
       this.audio.preload = 'auto';
+      this.audio.loop = true;
     }
 
     this.audio.currentTime = 0;

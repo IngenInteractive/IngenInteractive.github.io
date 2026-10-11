@@ -1,15 +1,26 @@
 <section class="failure-screen" aria-live="assertive">
-  <video
-    #magicVideo
-    class="magic-video"
-    [class.is-visible]="hasVideo"
-    [src]="videoSource"
-    playsinline
-    muted
-    loop
-    (loadeddata)="onVideoReady()"
-    (error)="onVideoError()"
-  ></video>
+  <div class="win98-window" [class.is-visible]="hasVideo" aria-label="System video message window">
+    <div class="win98-titlebar">
+      <span class="window-icon" aria-hidden="true"></span>
+      <span class="window-title">System Message</span>
+      <div class="window-controls" aria-hidden="true">
+        <span class="control-button">_</span>
+        <span class="control-button">□</span>
+      </div>
+    </div>
+    <div class="win98-body">
+      <video
+        #magicVideo
+        class="magic-video"
+        [src]="videoSource"
+        playsinline
+        muted
+        loop
+        (loadeddata)="onVideoReady()"
+        (error)="onVideoError()"
+      ></video>
+    </div>
+  </div>
 
   @if (!hasVideo) {
     <div class="failure-copy">
