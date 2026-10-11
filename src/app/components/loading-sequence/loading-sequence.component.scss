@@ -2,6 +2,14 @@
   padding: 16px 13px 18px;
 }
 
+.media-preload {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .loader-title {
   margin-bottom: 12px;
   padding: 5px 8px;

@@ -1,4 +1,5 @@
 <section class="loader" aria-live="polite">
+  <video class="media-preload" [src]="videoSource" preload="auto" muted playsinline aria-hidden="true"></video>
   <div class="loader-title">COMPUTER PRIZE RETRIEVAL</div>
   @for (step of steps; track step.label; let index = $index) {
     <p [class.complete]="index < activeStep" [class.active]="index === activeStep">

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { AudioService } from '../../services/audio.service';
 import { MAGIC_WORD_VIDEO } from '../../services/media-config';
 
@@ -8,7 +8,7 @@ import { MAGIC_WORD_VIDEO } from '../../services/media-config';
   templateUrl: './magic-word.component.html',
   styleUrl: './magic-word.component.scss'
 })
-export class MagicWordComponent implements OnInit {
+export class MagicWordComponent implements OnInit, AfterViewInit {
   @ViewChild('magicVideo') private magicVideo?: ElementRef<HTMLVideoElement>;
 
   readonly videoSource = MAGIC_WORD_VIDEO;
@@ -19,6 +19,11 @@ export class MagicWordComponent implements OnInit {
 
   ngOnInit(): void {
     this.audioService.playMagicWord();
+  }
+
+  ngAfterViewInit(): void {
+    const video = this.magicVideo?.nativeElement;
+    video?.load();
   }
 
   onVideoReady(): void {

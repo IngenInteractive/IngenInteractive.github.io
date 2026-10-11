@@ -100,6 +100,7 @@
 }
 
 .win98-body {
+  position: relative;
   padding: 8px;
   border-top: 2px solid #808080;
   background: #000000;
@@ -111,6 +112,19 @@
   max-height: min(72vh, 620px);
   object-fit: contain;
   background: #000000;
+}
+
+.video-buffer-status {
+  position: absolute;
+  inset: 8px;
+  display: grid;
+  place-items: center;
+  color: #50d65b;
+  background:
+    repeating-linear-gradient(0deg, rgba(80, 214, 91, 0.08) 0 1px, transparent 1px 4px),
+    #000000;
+  font: 700 0.85rem "Courier New", monospace;
+  text-align: center;
 }
 
 .failure-copy {

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { MAGIC_WORD_VIDEO } from '../../services/media-config';
 
 interface LoadingStep {
   label: string;
@@ -14,6 +15,7 @@ interface LoadingStep {
 export class LoadingSequenceComponent implements OnInit, OnDestroy {
   @Output() complete = new EventEmitter<void>();
 
+  readonly videoSource = MAGIC_WORD_VIDEO;
   readonly steps: LoadingStep[] = [
     { label: 'ACCESSING PRIZE DATABASE...', duration: 950 },
     { label: 'VERIFYING WINNING ENTRY...', duration: 1050 },

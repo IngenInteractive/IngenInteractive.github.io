@@ -1,5 +1,5 @@
 <section class="failure-screen" aria-live="assertive">
-  <div class="win98-window" [class.is-visible]="hasVideo" aria-label="System video message window">
+  <div class="win98-window" [class.is-visible]="!videoChecked || hasVideo" aria-label="System video message window">
     <div class="win98-titlebar">
       <span class="window-icon" aria-hidden="true"></span>
       <span class="window-title">System Message</span>
@@ -13,16 +13,22 @@
         #magicVideo
         class="magic-video"
         [src]="videoSource"
+        preload="auto"
         playsinline
         muted
         loop
+        (canplay)="onVideoReady()"
         (loadeddata)="onVideoReady()"
+        (loadedmetadata)="onVideoReady()"
         (error)="onVideoError()"
       ></video>
+      @if (!videoChecked) {
+        <div class="video-buffer-status">BUFFERING SECURITY MESSAGE...</div>
+      }
     </div>
   </div>
 
-  @if (!hasVideo) {
+  @if (videoChecked && !hasVideo) {
     <div class="failure-copy">
       <div class="alert-line">PARK SECURITY OVERRIDE</div>
       <h2>
